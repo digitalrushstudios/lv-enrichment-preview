@@ -1,1037 +1,809 @@
-:root {
-  --cream: #f7efe5;
-  --cream-light: #fffaf4;
-  --sand: #dfc9b3;
-  --taupe: #8c7765;
-  --brown: #4a392f;
-  --deep: #231b17;
-  --gold: #c99b5c;
-  --gold-light: #f2d39a;
-  --blush: #b98375;
-  --sage: #9faa91;
-  --white: #ffffff;
-  --shadow: 0 24px 70px rgba(60, 43, 32, 0.14);
-  --radius: 28px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: "Manrope", sans-serif;
-  color: var(--brown);
-  background: var(--cream-light);
-  line-height: 1.65;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-}
-
-.container {
-  width: min(1180px, calc(100% - 40px));
-  margin: 0 auto;
-}
-
-.demo-notice {
-  width: 100%;
-  padding: 0.65rem 1rem;
-  text-align: center;
-  font-family: "Manrope", sans-serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #5f5145;
-  background: #f6efe7;
-  border-bottom: 1px solid rgba(95, 81, 69, 0.15);
-}
-
-.announcement-bar {
-  background: var(--deep);
-  color: var(--cream);
-  font-size: 0.9rem;
-}
-
-.announcement-inner {
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  position: relative;
-  text-align: center;
-}
-
-.announcement-link {
-  color: var(--gold-light);
-  font-weight: 700;
-}
-
-.announcement-close {
-  position: absolute;
-  right: 0;
-  background: transparent;
-  border: none;
-  color: var(--cream);
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(255, 250, 244, 0.86);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(74, 57, 47, 0.08);
-}
-
-.nav-inner {
-  min-height: 82px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-logo {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.nav-logo-text {
-  font-family: "Playfair Display", serif;
-  font-size: 1.75rem;
-  color: var(--deep);
-  letter-spacing: 0.02em;
-}
-
-.nav-logo-sub {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--taupe);
-  margin-top: 0.25rem;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--brown);
-}
-
-.nav-links a {
-  position: relative;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.35rem;
-  width: 0;
-  height: 2px;
-  background: var(--gold);
-  transition: width 0.25s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-hamburger {
-  display: none;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(74, 57, 47, 0.16);
-  background: var(--white);
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-.nav-hamburger span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: var(--brown);
-  margin: 4px auto;
-}
-
-.nav-mobile {
-  display: none;
-  padding: 1rem 20px 1.5rem;
-  background: var(--cream-light);
-  border-top: 1px solid rgba(74, 57, 47, 0.08);
-}
-
-.nav-mobile a {
-  display: block;
-  padding: 0.8rem 0;
-  font-weight: 700;
-}
-
-.nav-mobile.open {
-  display: block;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0.85rem 1.45rem;
-  border-radius: 999px;
-  font-size: 0.86rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  border: 1px solid transparent;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn-primary {
-  background: var(--brown);
-  color: var(--cream-light);
-  box-shadow: 0 14px 36px rgba(74, 57, 47, 0.2);
-}
-
-.btn-outline {
-  border-color: rgba(74, 57, 47, 0.25);
-  color: var(--brown);
-  background: rgba(255, 255, 255, 0.45);
-}
-
-.btn-gold {
-  background: var(--gold);
-  color: var(--deep);
-}
-
-.btn-outline-light {
-  border-color: rgba(255, 255, 255, 0.35);
-  color: var(--white);
-}
-
-.hero {
-  padding: 7rem 0 5rem;
-  background:
-    radial-gradient(circle at top left, rgba(201, 155, 92, 0.24), transparent 34%),
-    linear-gradient(135deg, var(--cream-light), var(--cream));
-  overflow: hidden;
-}
-
-.hero-inner {
-  display: grid;
-  grid-template-columns: 1fr 0.92fr;
-  align-items: center;
-  gap: 4rem;
-}
-
-.hero-eyebrow,
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--taupe);
-  margin-bottom: 1.2rem;
-}
-
-.hero-eyebrow-line {
-  width: 44px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.hero-title,
-.section-title,
-.offer-content h2 {
-  font-family: "Cormorant Garamond", serif;
-  color: var(--deep);
-  font-weight: 600;
-  line-height: 0.96;
-  letter-spacing: -0.03em;
-}
-
-.hero-title {
-  font-size: clamp(4rem, 8vw, 7.8rem);
-  margin-bottom: 1.4rem;
-}
-
-.hero-title em,
-.offer-content em {
-  color: var(--gold);
-  font-style: italic;
-}
-
-.hero-subtitle {
-  max-width: 600px;
-  font-size: 1.08rem;
-  color: var(--taupe);
-  margin-bottom: 2rem;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.hero-stats {
-  display: flex;
-  gap: 1.6rem;
-  margin-top: 2.4rem;
-  flex-wrap: wrap;
-}
-
-.hero-stat {
-  padding-right: 1.6rem;
-  border-right: 1px solid rgba(74, 57, 47, 0.14);
-}
-
-.hero-stat:last-child {
-  border-right: none;
-}
-
-.hero-stat-value {
-  display: block;
-  font-family: "Playfair Display", serif;
-  font-size: 1.8rem;
-  color: var(--deep);
-}
-
-.hero-stat-label {
-  display: block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--taupe);
-}
-
-.hero-image-wrap {
-  position: relative;
-}
-
-.hero-image-frame,
-.about-image-frame {
-  border-radius: 42px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  background: var(--sand);
-}
-
-.hero-img {
-  width: 100%;
-  height: 620px;
-  object-fit: cover;
-}
-
-.hero-badge {
-  position: absolute;
-  left: -28px;
-  bottom: 42px;
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  background: rgba(255, 250, 244, 0.94);
-  border: 1px solid rgba(74, 57, 47, 0.12);
-  box-shadow: var(--shadow);
-  padding: 0.85rem 1rem;
-  border-radius: 999px;
-}
-
-.hero-badge-avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.hero-badge-text strong,
-.hero-badge-text span {
-  display: block;
-}
-
-.hero-badge-text strong {
-  color: var(--deep);
-  font-size: 0.9rem;
-}
-
-.hero-badge-text span {
-  color: var(--taupe);
-  font-size: 0.75rem;
-}
-
-.trust {
-  padding: 1.2rem 0;
-  background: var(--white);
-  border-top: 1px solid rgba(74, 57, 47, 0.08);
-  border-bottom: 1px solid rgba(74, 57, 47, 0.08);
-}
-
-.trust-list {
-  display: flex;
-  justify-content: center;
-  gap: 1.4rem;
-  flex-wrap: wrap;
-  font-size: 0.83rem;
-  color: var(--taupe);
-  font-weight: 700;
-}
-
-.trust-item span {
-  color: var(--gold);
-  margin-right: 0.35rem;
-}
-
-section {
-  padding: 6rem 0;
-}
-
-.section-header {
-  max-width: 760px;
-  margin-bottom: 3rem;
-}
-
-.text-center {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section-title {
-  font-size: clamp(2.7rem, 5vw, 5rem);
-}
-
-.section-subtitle {
-  max-width: 680px;
-  color: var(--taupe);
-  margin-top: 1rem;
-  font-size: 1.05rem;
-}
-
-.services-grid,
-.why-grid,
-.testimonials-grid,
-.policy-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.35rem;
-}
-
-.service-card,
-.why-card,
-.testimonial-card,
-.policy-card {
-  background: var(--white);
-  border: 1px solid rgba(74, 57, 47, 0.09);
-  border-radius: var(--radius);
-  padding: 2rem;
-  box-shadow: 0 18px 55px rgba(74, 57, 47, 0.08);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
-}
-
-.service-card:hover,
-.why-card:hover,
-.testimonial-card:hover,
-.policy-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 28px 70px rgba(74, 57, 47, 0.12);
-}
-
-.service-icon,
-.why-card div:first-child,
-.policy-card div:first-child {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.service-card h3,
-.why-card h3,
-.policy-card h3,
-.location-info h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 1.45rem;
-  color: var(--deep);
-  margin-bottom: 0.7rem;
-}
-
-.service-card p,
-.why-card p,
-.policy-card p {
-  color: var(--taupe);
-}
-
-.service-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 1.4rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(74, 57, 47, 0.09);
-  font-weight: 800;
-}
-
-.service-footer a {
-  color: var(--gold);
-}
-
-.services-footer {
-  text-align: center;
-  margin-top: 2.3rem;
-}
-
-.about {
-  background: var(--cream);
-}
-
-.about-inner {
-  display: grid;
-  grid-template-columns: 0.9fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.about-image-wrap {
-  position: relative;
-}
-
-.about-img {
-  width: 100%;
-  height: 620px;
-  object-fit: cover;
-}
-
-.about-accent-card {
-  position: absolute;
-  right: -24px;
-  bottom: 48px;
-  width: 190px;
-  padding: 1.4rem;
-  border-radius: 24px;
-  background: var(--white);
-  box-shadow: var(--shadow);
-}
-
-.about-accent-number {
-  display: block;
-  font-family: "Playfair Display", serif;
-  font-size: 3rem;
-  line-height: 1;
-  color: var(--gold);
-}
-
-.about-accent-text {
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.11em;
-}
-
-.about-content p {
-  color: var(--taupe);
-  margin-bottom: 1.2rem;
-}
-
-.about-note {
-  background: rgba(255, 255, 255, 0.62);
-  border-left: 3px solid var(--gold);
-  padding: 1rem 1.2rem;
-  border-radius: 0 18px 18px 0;
-}
-
-.about-values {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-top: 1.4rem;
-}
-
-.about-values li {
-  padding: 0.8rem 1rem;
-  border-radius: 999px;
-  background: var(--white);
-  color: var(--brown);
-  font-weight: 700;
-  font-size: 0.88rem;
-}
-
-.offer {
-  background: var(--deep);
-  color: var(--cream-light);
-  overflow: hidden;
-}
-
-.offer-inner {
-  display: grid;
-  grid-template-columns: 1fr 0.82fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.offer-badge {
-  display: inline-flex;
-  margin-bottom: 1.2rem;
-  color: var(--gold-light);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 800;
-  font-size: 0.75rem;
-}
-
-.offer-content h2 {
-  color: var(--white);
-  font-size: clamp(2.8rem, 5vw, 5rem);
-  margin-bottom: 1.4rem;
-}
-
-.offer-content p {
-  color: rgba(255, 250, 244, 0.72);
-  margin-bottom: 1.5rem;
-  max-width: 600px;
-}
-
-.offer-deals {
-  display: grid;
-  gap: 0.9rem;
-  margin: 1.7rem 0;
-}
-
-.offer-deals li {
-  padding: 1rem 1.1rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
-}
-
-.offer-deals strong,
-.offer-deals span {
-  display: block;
-}
-
-.offer-deals span {
-  color: rgba(255, 250, 244, 0.62);
-  font-size: 0.9rem;
-}
-
-.offer-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.offer-visual {
-  border-radius: 38px;
-  overflow: hidden;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
-}
-
-.offer-img {
-  width: 100%;
-  height: 560px;
-  object-fit: cover;
-}
-
-.why {
-  background: var(--cream-light);
-}
-
-.awards {
-  background: var(--cream);
-}
-
-.awards-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.awards-badges {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-}
-
-.awards-badges figure {
-  background: var(--white);
-  border-radius: 22px;
-  padding: 1rem;
-  width: 150px;
-  text-align: center;
-  box-shadow: 0 18px 45px rgba(74, 57, 47, 0.08);
-}
-
-.awards-badges img {
-  width: 100%;
-  height: 120px;
-  object-fit: contain;
-}
-
-.awards-badges figcaption {
-  margin-top: 0.5rem;
-  font-weight: 800;
-  color: var(--taupe);
-  font-size: 0.8rem;
-}
-
-.testimonials {
-  background: var(--cream-light);
-}
-
-.testimonial-stars {
-  color: var(--gold);
-  letter-spacing: 0.08em;
-  margin-bottom: 1rem;
-}
-
-.testimonial-card blockquote {
-  color: var(--taupe);
-  font-size: 1rem;
-  margin-bottom: 1.4rem;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.testimonial-avatar {
-  width: 44px;
-  height: 44px;
-  background: var(--cream);
-  color: var(--brown);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-weight: 900;
-}
-
-.testimonial-author span,
-.testimonial-author small {
-  display: block;
-}
-
-.testimonial-author span {
-  font-weight: 900;
-  color: var(--deep);
-}
-
-.testimonial-author small {
-  color: var(--taupe);
-  font-size: 0.78rem;
-}
-
-.booking-cta {
-  background:
-    radial-gradient(circle at top, rgba(201, 155, 92, 0.22), transparent 35%),
-    var(--brown);
-  color: var(--cream-light);
-  text-align: center;
-}
-
-.booking-cta .section-title,
-.booking-cta .section-label,
-.booking-cta .section-subtitle {
-  color: var(--cream-light);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.booking-cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0 1rem;
-  flex-wrap: wrap;
-}
-
-.booking-note {
-  color: rgba(255, 250, 244, 0.7);
-}
-
-.policy {
-  background: var(--cream);
-}
-
-.location {
-  background: var(--cream-light);
-}
-
-.location-inner {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 1.5rem;
-}
-
-.location-map {
-  min-height: 520px;
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.location-info {
-  display: grid;
-  gap: 1rem;
-}
-
-.location-info > div {
-  background: var(--white);
-  padding: 1.7rem;
-  border-radius: 24px;
-  box-shadow: 0 14px 40px rgba(74, 57, 47, 0.07);
-}
-
-.location-info p,
-.location-info a {
-  color: var(--taupe);
-}
-
-.location-info .btn {
-  margin-top: 1rem;
-  color: var(--brown);
-}
-
-.footer {
-  background: var(--deep);
-  color: rgba(255, 250, 244, 0.72);
-  padding: 4rem 0 2rem;
-}
-
-.footer a {
-  color: rgba(255, 250, 244, 0.78);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 0.75fr 0.75fr 1fr;
-  gap: 2rem;
-}
-
-.footer h3,
-.footer-brand-name {
-  color: var(--white);
-}
-
-.footer-brand-name {
-  font-family: "Playfair Display", serif;
-  font-size: 2rem;
-}
-
-.footer-brand-sub {
-  color: var(--gold-light);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  margin-bottom: 1rem;
-}
-
-.footer li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.09);
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  font-size: 0.82rem;
-}
-
-.floating-book {
-  display: none;
-}
-
-.reveal,
-.reveal-left,
-.reveal-right {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal-left {
-  transform: translateX(-24px);
-}
-
-.reveal-right {
-  transform: translateX(24px);
-}
-
-.reveal.active,
-.reveal-left.active,
-.reveal-right.active {
-  opacity: 1;
-  transform: translate(0, 0);
-}
-
-.delay-1 { transition-delay: 0.08s; }
-.delay-2 { transition-delay: 0.16s; }
-.delay-3 { transition-delay: 0.24s; }
-.delay-4 { transition-delay: 0.32s; }
-.delay-5 { transition-delay: 0.4s; }
-
-@media (max-width: 980px) {
-  .nav-links,
-  .nav-cta {
-    display: none;
-  }
-
-  .nav-hamburger {
-    display: block;
-  }
-
-  .hero-inner,
-  .about-inner,
-  .offer-inner,
-  .awards-inner,
-  .location-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    padding-top: 5rem;
-  }
-
-  .hero-img,
-  .about-img,
-  .offer-img {
-    height: 480px;
-  }
-
-  .hero-badge,
-  .about-accent-card {
-    position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    margin-top: 1rem;
-  }
-
-  .services-grid,
-  .why-grid,
-  .testimonials-grid,
-  .policy-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 680px) {
-  .container {
-    width: min(100% - 28px, 1180px);
-  }
-
-  .announcement-inner {
-    padding-right: 2rem;
-    font-size: 0.78rem;
-  }
-
-  .hero {
-    padding: 4rem 0 3rem;
-  }
-
-  .hero-title {
-    font-size: clamp(3.25rem, 16vw, 5.25rem);
-  }
-
-  .section-title,
-  .offer-content h2 {
-    font-size: clamp(2.4rem, 11vw, 3.6rem);
-  }
-
-  .hero-buttons,
-  .offer-buttons,
-  .booking-cta-buttons {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .hero-stat {
-    border-right: none;
-    border-bottom: 1px solid rgba(74, 57, 47, 0.14);
-    padding-bottom: 0.8rem;
-  }
-
-  .services-grid,
-  .why-grid,
-  .testimonials-grid,
-  .policy-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-values {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-img,
-  .about-img,
-  .offer-img {
-    height: 390px;
-  }
-
-  .awards-badges {
-    justify-content: center;
-  }
-
-  .location-map {
-    min-height: 360px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-  }
-
-  .floating-book {
-    display: inline-flex;
-    position: fixed;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    z-index: 80;
-  }
-}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Enrichment: Holistic Skin Health | Facials, Skin Treatments & Wellness | Las Vegas, NV</title>
+
+  <meta name="description" content="Experience personalized facials, microneedling, chemical peels, dermaplaning, and holistic skin wellness treatments at Enrichment in Las Vegas, NV." />
+
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://www.lvenrichment.com/" />
+
+  <meta property="og:title" content="Enrichment: Holistic Skin Health" />
+
+  <meta property="og:description" content="Personalized facials, skin treatments, and holistic wellness services designed for you." />
+
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+
+  <div class="demo-notice">
+
+    Website Preview Concept · Created to demonstrate a potential redesign direction.
+
+  </div>
+
+  <div class="announcement-bar" id="announcement-bar" role="banner">
+
+    <div class="container announcement-inner">
+
+      <span class="announcement-icon">📍</span>
+
+      <p class="announcement-text">
+
+        <strong>We've Moved!</strong> Now inside <strong>Phenix Salon Suites</strong>,
+
+        9975 S Eastern Ave #119, Las Vegas, NV
+
+      </p>
+
+      <a href="#location" class="announcement-link">Get Directions →</a>
+
+      <button class="announcement-close" id="announcement-close" aria-label="Dismiss announcement">✕</button>
+
+    </div>
+
+  </div>
+
+  <header>
+
+    <nav class="nav" id="nav">
+
+      <div class="container nav-inner">
+
+        <a href="#home" class="nav-logo">
+
+          <span class="nav-logo-text">Enrichment</span>
+
+          <span class="nav-logo-sub">Holistic Skin Health</span>
+
+        </a>
+
+        <ul class="nav-links">
+
+          <li><a href="#services">Services</a></li>
+
+          <li><a href="#about">About</a></li>
+
+          <li><a href="#specials">Specials</a></li>
+
+          <li><a href="#testimonials">Reputation</a></li>
+
+          <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+        <a href="#book" class="btn btn-primary nav-cta">Book Now</a>
+
+        <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+
+          <span></span>
+
+          <span></span>
+
+          <span></span>
+
+        </button>
+
+      </div>
+
+      <div class="nav-mobile" id="nav-mobile">
+
+        <a href="#services">Services</a>
+
+        <a href="#about">About</a>
+
+        <a href="#specials">Specials</a>
+
+        <a href="#testimonials">Reputation</a>
+
+        <a href="#contact">Contact</a>
+
+        <a href="#book" class="btn btn-primary">Book an Appointment</a>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+
+      <div class="container">
+
+        <div class="hero-inner">
+
+          <div class="hero-content">
+
+            <div class="hero-eyebrow reveal">
+
+              <span class="hero-eyebrow-line"></span>
+
+              <span class="hero-eyebrow-text">Holistic Skin Health & Wellness</span>
+
+            </div>
+
+            <h1 class="hero-title reveal delay-1">
+
+              Relax, Restore,<br />
+
+              and Feel Like<br />
+
+              <em>Yourself Again</em>
+
+            </h1>
+
+            <p class="hero-subtitle reveal delay-2">
+
+              Professional facials, skin treatments, and holistic wellness services
+
+              designed to help you unwind, refresh, and glow with confidence.
+
+            </p>
+
+            <div class="hero-buttons reveal delay-3">
+
+              <a href="#book" class="btn btn-primary">Book an Appointment</a>
+
+              <a href="#services" class="btn btn-outline">View Services</a>
+
+            </div>
+
+            <div class="hero-stats reveal delay-4">
+
+              <div class="hero-stat">
+
+                <span class="hero-stat-value">15+</span>
+
+                <span class="hero-stat-label">Skin Services</span>
+
+              </div>
+
+              <div class="hero-stat">
+
+                <span class="hero-stat-value">5★</span>
+
+                <span class="hero-stat-label">Client Rated</span>
+
+              </div>
+
+              <div class="hero-stat">
+
+                <span class="hero-stat-value">100%</span>
+
+                <span class="hero-stat-label">Personalized</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="hero-image-wrap reveal-right delay-2">
+
+            <div class="hero-image-frame">
+
+              <img src="spa-room.png" alt="Serene treatment room at Enrichment Holistic Skin Health" class="hero-img" />
+
+            </div>
+
+            <div class="hero-badge">
+
+              <img src="owner.jpg" alt="Beverly Velado" class="hero-badge-avatar" />
+
+              <div class="hero-badge-text">
+
+                <strong>Beverly Velado</strong>
+
+                <span>Founder & Master Aesthetician</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="trust">
+
+      <div class="container">
+
+        <ul class="trust-list">
+
+          <li class="trust-item"><span>✦</span> Master Aesthetician</li>
+
+          <li class="trust-item"><span>✦</span> Natural & Holistic Ingredients</li>
+
+          <li class="trust-item"><span>✦</span> Customized for Every Skin Type</li>
+
+          <li class="trust-item"><span>✦</span> Las Vegas, NV</li>
+
+          <li class="trust-item"><span>✦</span> Best of Las Vegas Award Winner</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <section class="services" id="services">
+
+      <div class="container">
+
+        <div class="section-header reveal">
+
+          <span class="section-label">What We Offer</span>
+
+          <h2 class="section-title">Treatments Crafted<br />for Your Skin's Needs</h2>
+
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card reveal delay-1">
+
+            <div class="service-icon">🌿</div>
+
+            <h3>Signature Facial</h3>
+
+            <p>A fully customized treatment with skin analysis, gentle cleanse, exfoliation, extractions, jade roller massage, and a custom mask.</p>
+
+            <div class="service-footer"><span>From $75</span><a href="#book">Book Now →</a></div>
+
+          </article>
+
+          <article class="service-card reveal delay-2">
+
+            <div class="service-icon">✨</div>
+
+            <h3>Chemical Peel</h3>
+
+            <p>Dissolve dull, uneven skin and stimulate collagen renewal for a smoother, more radiant complexion.</p>
+
+            <div class="service-footer"><span>$225</span><a href="#book">Book Now →</a></div>
+
+          </article>
+
+          <article class="service-card reveal delay-3">
+
+            <div class="service-icon">💎</div>
+
+            <h3>Collagen Induction Therapy</h3>
+
+            <p>Microneedling that firms, smooths, and evens skin tone. Includes a far infrared sauna session.</p>
+
+            <div class="service-footer"><span>From $250</span><a href="#book">Book Now →</a></div>
+
+          </article>
+
+          <article class="service-card reveal delay-1">
+
+            <div class="service-icon">🪷</div>
+
+            <h3>Dermaplaning</h3>
+
+            <p>A gentle exfoliation that removes dead skin cells and facial hair, leaving skin smooth and glowing.</p>
+
+            <div class="service-footer"><span>$125</span><a href="#book">Book Now →</a></div>
+
+          </article>
+
+          <article class="service-card reveal delay-2">
+
+            <div class="service-icon">💡</div>
+
+            <h3>LED Phototherapy Facial</h3>
+
+            <p>Light-activated treatment to support collagen, reduce fine lines, clear acne, and improve tone.</p>
+
+            <div class="service-footer"><span>$145</span><a href="#book">Book Now →</a></div>
+
+          </article>
+
+          <article class="service-card reveal delay-3">
+
+            <div class="service-icon">🌸</div>
+
+            <h3>Teen Clean Facial</h3>
+
+            <p>A gentle facial for teenage skin with cleansing, extractions, and personalized home-care guidance.</p>
+
+            <div class="service-footer"><span>$65</span><a href="#book">Book Now →</a></div>
+
+          </article>
+
+        </div>
+
+        <div class="services-footer reveal">
+
+          <a href="#book" class="btn btn-outline">View All Services & Pricing</a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="about" id="about">
+
+      <div class="container about-inner">
+
+        <div class="about-image-wrap reveal-left">
+
+          <div class="about-image-frame">
+
+            <img src="owner.jpg" alt="Founder of Enrichment Holistic Skin Health" class="about-img" />
+
+          </div>
+
+          <div class="about-accent-card">
+
+            <span class="about-accent-number">10+</span>
+
+            <span class="about-accent-text">Years of Experience</span>
+
+          </div>
+
+        </div>
+
+        <div class="about-content reveal-right">
+
+          <span class="section-label">Meet Your Esthetician</span>
+
+          <h2 class="section-title">Beverly Velado,<br />Master Aesthetician</h2>
+
+          <p>
+
+            Enrichment Holistic Skin Health is a boutique spa in Las Vegas, NV. Guests are welcomed
+
+            into a calming space with holistic skin health treatments rooted in intentional care.
+
+          </p>
+
+          <p>
+
+            When your skin is balanced, you look healthy, bright, clear, and radiant. At Enrichment,
+
+            each facial is customized to your skin's specific needs.
+
+          </p>
+
+          <p class="about-note">
+
+            Most treatments include aromatherapy, skin analysis, gommage, pressure point treatment,
+
+            a custom mask, and light effleurage of the arms and hands.
+
+          </p>
+
+          <ul class="about-values">
+
+            <li>Natural Ingredients</li>
+
+            <li>Custom Skin Analysis</li>
+
+            <li>Licensed Esthetician</li>
+
+            <li>Far Infrared Sauna</li>
+
+            <li>Teen & Family Friendly</li>
+
+            <li>Gift Certificates Available</li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="offer" id="specials">
+
+      <div class="container">
+
+        <div class="offer-inner">
+
+          <div class="offer-content">
+
+            <span class="offer-badge">✦ New Client Special</span>
+
+            <h2>Your First Visit,<br /><em>Beautifully Priced</em></h2>
+
+            <p>
+
+              Try popular treatments at a special introductory rate and experience personalized skin care in a calming studio environment.
+
+            </p>
+
+            <ul class="offer-deals">
+
+              <li><strong>Fruit Enzyme Peel + Microderm - $99</strong><span>Valued at $165 · Save $66</span></li>
+
+              <li><strong>Chemical Peel - $50 Off</strong><span>Now $175 · Limited availability</span></li>
+
+              <li><strong>Paraffin Hand or Foot Treatment - $35</strong><span>Softening · Hydrating · Relaxing</span></li>
+
+            </ul>
+
+            <div class="offer-buttons">
+
+              <a href="#book" class="btn btn-gold">Claim Your Offer</a>
+
+              <a href="#services" class="btn btn-outline-light">View All Services</a>
+
+            </div>
+
+          </div>
+
+          <div class="offer-visual">
+
+            <img src="facial-pic.jpeg" alt="Relaxing facial treatment" class="offer-img" />
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="why" id="why">
+
+      <div class="container">
+
+        <div class="section-header text-center reveal">
+
+          <span class="section-label">Why Enrichment</span>
+
+          <h2 class="section-title">The Difference You'll Feel<br />from the Moment You Arrive</h2>
+
+        </div>
+
+        <div class="why-grid">
+
+          <div class="why-card reveal delay-1"><div>🎯</div><h3>Personalized Service</h3><p>Every treatment begins with a skin analysis. Your facial is designed for you.</p></div>
+
+          <div class="why-card reveal delay-2"><div>🕯️</div><h3>Peaceful Atmosphere</h3><p>A calm, welcoming studio where you can disconnect, breathe, and be cared for.</p></div>
+
+          <div class="why-card reveal delay-3"><div>🏅</div><h3>Experienced Team</h3><p>Licensed, trained, and passionate about skin health.</p></div>
+
+          <div class="why-card reveal delay-4"><div>📅</div><h3>Easy Booking</h3><p>Choose your service, pick your time, and arrive ready to relax.</p></div>
+
+          <div class="why-card reveal delay-5"><div>🎁</div><h3>Perfect for Gifting</h3><p>Gift certificates are available for birthdays, holidays, or self-care surprises.</p></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="awards">
+
+      <div class="container">
+
+        <div class="awards-inner reveal">
+
+          <div>
+
+            <span class="section-label">Recognition</span>
+
+            <h2 class="section-title">Award-Winning<br />Skin Care in Las Vegas</h2>
+
+            <p class="section-subtitle">Voted Best of Las Vegas by the Las Vegas Review-Journal.</p>
+
+          </div>
+
+          <div class="awards-badges">
+
+            <figure><img src="award-2020-gold.webp" alt="Best of Las Vegas 2020 Gold" /><figcaption>Gold · 2020</figcaption></figure>
+
+            <figure><img src="award-2020-bronze.webp" alt="Best of Las Vegas 2020 Bronze" /><figcaption>Bronze · 2020</figcaption></figure>
+
+            <figure><img src="award-2019-bronze.webp" alt="Best of Las Vegas 2019 Bronze" /><figcaption>Bronze · 2019</figcaption></figure>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="testimonials" id="testimonials">
+
+      <div class="container">
+
+        <div class="section-header text-center reveal">
+
+          <span class="section-label">Reputation</span>
+
+          <h2 class="section-title">A Trusted Las Vegas Skin Care Studio</h2>
+
+        </div>
+
+        <div class="testimonials-grid">
+
+          <article class="testimonial-card reveal delay-1">
+
+            <div class="testimonial-stars">★★★★★</div>
+
+            <blockquote>Known for personalized skin care, relaxing treatments, and a warm boutique studio experience.</blockquote>
+
+            <div class="testimonial-author"><div class="testimonial-avatar">E</div><div><span>Enrichment Client Experience</span><small>Skin Care & Wellness</small></div></div>
+
+          </article>
+
+          <article class="testimonial-card reveal delay-2">
+
+            <div class="testimonial-stars">★★★★★</div>
+
+            <blockquote>Designed around customized treatments, professional guidance, and a calm environment from start to finish.</blockquote>
+
+            <div class="testimonial-author"><div class="testimonial-avatar">L</div><div><span>Las Vegas Studio</span><small>Holistic Skin Health</small></div></div>
+
+          </article>
+
+          <article class="testimonial-card reveal delay-3">
+
+            <div class="testimonial-stars">★★★★★</div>
+
+            <blockquote>Built for clients looking for facials, peels, dermaplaning, microneedling, and intentional self-care.</blockquote>
+
+            <div class="testimonial-author"><div class="testimonial-avatar">S</div><div><span>Service Focused</span><small>Facials & Treatments</small></div></div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="booking-cta" id="book">
+
+      <div class="container">
+
+        <div class="booking-cta-inner">
+
+          <span class="section-label reveal">Ready When You Are</span>
+
+          <h2 class="section-title reveal delay-1">Ready to Book Your<br />Moment of Calm?</h2>
+
+          <p class="section-subtitle reveal delay-2">Schedule your next facial, skin treatment, or wellness session today.</p>
+
+          <div class="booking-cta-buttons reveal delay-3">
+
+            <a href="#" class="btn btn-primary">Book Now Online</a>
+
+            <a href="tel:+13104882888" class="btn btn-outline">Call Today</a>
+
+          </div>
+
+          <p class="booking-note reveal delay-4">Online booking available 24/7 · Same-week appointments often available</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <section class="policy" id="policy">
+
+    <div class="container">
+
+      <div class="policy-inner reveal">
+
+        <div class="section-header text-center">
+
+          <span class="section-label">Before You Book</span>
+
+          <h2 class="section-title">Booking & Cancellation Policy</h2>
+
+          <p class="section-subtitle">We respect your time and ask that you respect ours.</p>
+
+        </div>
+
+        <div class="policy-grid">
+
+          <div class="policy-card"><div>📅</div><h3>How to Book</h3><p>Book online anytime through Square Appointments. Once confirmed, you'll receive appointment details.</p></div>
+
+          <div class="policy-card"><div>🔔</div><h3>Cancellations & Changes</h3><p>Cancellations or service changes must be received at least <strong>24 hours</strong> before your appointment.</p></div>
+
+          <div class="policy-card"><div>⚠️</div><h3>Late Cancellations & No-Shows</h3><p>Cancellations within 24 hours and no-show appointments may be charged a <strong>$50 cancellation fee</strong>.</p></div>
+
+          <div class="policy-card"><div>🎟️</div><h3>Vouchers & Gift Certificates</h3><p>If you have a voucher or gift certificate, add your voucher number in the appointment notes.</p></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="location" id="location">
+
+    <div class="container">
+
+      <div class="section-header reveal">
+
+        <span class="section-label">Come See Us</span>
+
+        <h2 class="section-title">Find Enrichment in Las Vegas</h2>
+
+      </div>
+
+      <div class="location-inner">
+
+        <div class="location-map reveal-left">
+
+          <iframe
+
+            title="Enrichment Holistic Skin Health location map"
+
+            src="https://maps.google.com/maps?q=9975+S+Eastern+Ave+%23119+Las+Vegas+NV+89123&t=&z=15&ie=UTF8&iwloc=&output=embed"
+
+            width="100%"
+
+            height="100%"
+
+            style="border:0;"
+
+            allowfullscreen
+
+            loading="lazy"
+
+            referrerpolicy="no-referrer-when-downgrade">
+
+          </iframe>
+
+        </div>
+
+        <div class="location-info reveal-right">
+
+          <div>
+
+            <h3>Address</h3>
+
+            <p>9975 S Eastern Ave, Suite #119<br />Inside Phenix Salon Suites<br />Las Vegas, NV 89123</p>
+
+            <a href="https://maps.google.com/?q=9975+S+Eastern+Ave+%23119+Las+Vegas+NV+89123" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Get Directions</a>
+
+          </div>
+
+          <div>
+
+            <h3>Hours</h3>
+
+            <p>Mon: Closed<br />Tue: 10am - 2pm<br />Wed-Fri: 9am - 5pm<br />Sat: 8am - 2pm<br />Sun: Closed</p>
+
+          </div>
+
+          <div>
+
+            <h3>Contact</h3>
+
+            <p><a href="tel:+13104882888">(310) 488-2888</a><br /><a href="mailto:esti.beverlyvelado@gmail.com">esti.beverlyvelado@gmail.com</a></p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer class="footer" id="contact">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-brand-name">Enrichment</div>
+
+          <div class="footer-brand-sub">Holistic Skin Health LLC</div>
+
+          <p>A personalized skin health studio committed to helping you look and feel your best.</p>
+
+        </div>
+
+        <div>
+
+          <h3>Services</h3>
+
+          <ul>
+
+            <li><a href="#services">Signature Facial</a></li>
+
+            <li><a href="#services">Chemical Peel</a></li>
+
+            <li><a href="#services">Microneedling</a></li>
+
+            <li><a href="#services">Dermaplaning</a></li>
+
+          </ul>
+
+        </div>
+
+        <div>
+
+          <h3>Studio</h3>
+
+          <ul>
+
+            <li><a href="#about">About Us</a></li>
+
+            <li><a href="#specials">New Client Specials</a></li>
+
+            <li><a href="#testimonials">Reputation</a></li>
+
+            <li><a href="#book">Book Online</a></li>
+
+          </ul>
+
+        </div>
+
+        <div>
+
+          <h3>Contact & Hours</h3>
+
+          <p>9975 S Eastern Ave, #119<br />Las Vegas, NV 89123</p>
+
+          <p><a href="tel:+13104882888">(310) 488-2888</a></p>
+
+          <p><a href="mailto:esti.beverlyvelado@gmail.com">esti.beverlyvelado@gmail.com</a></p>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <p>&copy; <span id="footer-year"></span> Enrichment: Holistic Skin Health LLC. All rights reserved.</p>
+
+        <p>Website preview concept for presentation purposes only.</p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <a href="#book" class="floating-book btn btn-primary">Book Now</a>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
